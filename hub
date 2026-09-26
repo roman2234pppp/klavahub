@@ -1,0 +1,1121 @@
+-- Luraph runtime function (from the VM object, not part of the script: not lifted).
+local function luraph_runtime1(...)
+	error("Luraph runtime function, not devirtualized")
+end
+
+local v = table.pack(...)
+
+-- [Проверка прямого запуска удалена]
+
+local str = "?"
+loadstring = ce_like_loadstring_fn or loadstring
+local flag = false
+
+pcall(function()
+	flag = true
+	local UserGameSettings = UserSettings():GetService("UserGameSettings")
+
+	if not UserGameSettings:GetTutorialState("nil  nil  ") then
+		str = ""
+		local n = ({ wait() })[1] * 1000000
+
+		local function fn(arg)
+			local n2 = 1103515245
+			local n3 = 12345
+			local n4 = 99999999
+			local n5 = arg % 2147483648
+			local n6 = 1
+
+			return function(arg2, arg3)
+				local v2 = n4
+				local n7 = n2 * n5 + n3
+				local n8 = n7 % v2 + n6
+				n6 += 1
+				n5 = n8
+				n3 = n7 % 4858 * v62 % 5782
+				return arg2 + n8 % arg3 - arg2 + 1
+			end
+		end
+
+		local v2 = fn(n - n % 1)
+		UserGameSettings:SetTutorialState("nil  nil  ", true)
+		local n2 = 0
+
+		for i = 1, 16 do
+			local n3 = 0
+			local n4 = 1
+
+			for i2 = 1, 5 do
+				local flag2 = v2(10, 20) > 15
+				UserGameSettings:SetTutorialState("nil  nil  " .. n2, flag2)
+				n3 += (flag2 and 1 or 0) * n4
+				n4 *= 2
+				n2 += 1
+			end
+
+			str ..= ("qwertyuiopasdfghjklzxcvbnm098765"):sub(n3 + 1, n3 + 1)
+		end
+	else
+		str = ""
+		local n = 0
+
+		for i = 1, 16 do
+			local n2 = 0
+			local n3 = 1
+
+			for i2 = 1, 5 do
+				n2 += (UserGameSettings:GetTutorialState("nil  nil  " .. n) and 1 or 0) * n3
+				n3 *= 2
+				n += 1
+			end
+
+			str ..= ("qwertyuiopasdfghjklzxcvbnm098765"):sub(n2 + 1, n2 + 1)
+		end
+	end
+end)
+
+while not flag do
+end
+
+local now = os.clock()
+
+local flag2 = nil
+local flag3 = nil
+local v2 = ({ table.unpack(v, 1, v.n) })[3]
+local v3
+
+if v2 and v2[1] then
+	v3 = v2[1]
+else
+	v3 = nil
+end
+
+local floor = math.floor
+local random = math.random
+local remove = table.remove
+local char = string.char
+local n = 0
+local n2 = 2
+local tbl = {}
+local tbl2 = {}
+
+for i = 1, 256 do
+	tbl2[i] = i
+end
+
+repeat
+	local v4 = random(1, #tbl2)
+	local v5 = remove(tbl2, v4)
+	tbl[v5] = char(v5 - 1)
+until #tbl2 == 0
+
+local tbl3 = {}
+
+local function fn()
+	if #tbl3 == 0 then
+		n = (n * 149 + 4033097371307) % 35184372088832
+
+		repeat
+			n2 = n2 * 37 % 257
+		until n2 ~= 1
+
+		local n3 = n2 % 32
+		local n4 = floor(n / 2 ^ (13 - (n2 - n3) / 32)) % 4294967296 / 2 ^ n3
+		local n5 = floor(n4 % 1 * 4294967296) + floor(n4)
+		local n6 = n5 % 65536
+		local n7 = (n5 - n6) / 65536
+		local n8 = n6 % 256
+		local n9 = n7 % 256
+		tbl3 = { n8, (n6 - n8) / 256, n9, (n7 - n9) / 256 }
+	end
+
+	return table.remove(tbl3)
+end
+
+local tbl4 = {}
+local v4 = tbl4
+
+local function fn2(arg, arg2)
+	local v5 = tbl4
+
+	if not v5[arg2] then
+		tbl3 = {}
+		local v6 = tbl
+		n = arg2 % 35184372088832
+		n2 = arg2 % 255 + 2
+		v5[arg2] = ""
+		local n3 = 77
+
+		for i = 1, #arg do
+			n3 = (string.byte(arg, i) + fn() + n3) % 256
+			v5[arg2] = v5[arg2] .. v6[n3 + 1]
+		end
+	end
+
+	return arg2
+end
+
+local v5 = LUARMOR_SkipAntidebugDevMode
+local v6 = LUARMOR_AllowKeyCheckSkip
+local flag4 = false
+local v7 = ""
+local v8 = USE_NON_SSL_NODE
+local v9 = l_fastload_enabled
+local n3 = os[v4[fn2("(\204\6\168", 4882453074371)]](os[v4[fn2("UC\178}", 12971197083440)]](v4[fn2("\139L", 33012126087192)])) - os[v4[fn2("vܢ\204", 5436520764359)]](os[v4[fn2("f\150\187#", 4318721413046)]](v4[fn2("\209\6D", 24300592814183)]))
+local n4
+
+if n3 < 0 then
+	n4 = (86400 + -(-n3 % 86400)) % 86400
+else
+	n4 = n3 % 86400
+end
+
+local n5 = n4 / 3600
+
+if n5 >= 21 or n5 < 5 then
+	local tbl5 = {}
+	local v10 = v4[fn2("\226XO\140q\210K\180:%\205B\254\182.y\229\163\245\219v$\209Y\171\6f", 3448963992716)]
+	local v11 = v4[fn2("N\235X\233G\12\243\241ˣ@s\250\190\137\214\t\2267j\174\247\195\241\237\1\160", 16047561292385)]
+	tbl5[1] = v10
+	tbl5[2] = v11
+	v7 = tbl5[math[v4[fn2("\195K\\\173\155:", 14086848885567)]](1, 2)]
+elseif n5 >= 5 and n5 < 15 then
+	local tbl5 = {}
+	local v10 = v4[fn2("\136M\165r\0017j\254\186\147Ds\224x\241\151\231]k\137\28\184\17f,\138\149", 25839311805952)]
+	local v11 = v4[fn2("\211:<?S\222\17[!\164Yl\240F\230\"\193\251\128\220a\29\252\133\u{87}\163", 2297877629020)]
+	local v12 = v4[fn2("s\146p: \167\177_\228\255\136kW\246\245\253e\146M\245\19T\169IP\21\187", 2572763924828)]
+	local v13 = v4[fn2("'\26L\252\146.\25c\151\208\248ϕ\154\r\229I\243\26\149\181\139k`+\16\2", 19333311546965)]
+	local v14 = v4[fn2("$\1C\213\234\205?\169\200\"\188@\0\188\128\27C\244\12\203l\224\3p\245\187\233", 21697763200751)]
+	local v15 = v4[fn2("\30\197\216\\\25\163\155i\1304i\2af\14\181\15\174MD\174\131\206\208Zã", 15465575462979)]
+	local v16 = v4[fn2("\5ڝ_\154\171yf\184\193\138\26T\188\11\16#K\128\144:\7\197m\210\14\252", 30187025133009)]
+	local v17 = v4[fn2("\182\186\142\199\t\163\189V 8\195g\230w\148\228\193v\199\\\186\212\246\174\130H\254", 19714501527480)]
+	local v18 = v4[fn2("\248~\133\207\196r\178\244G\251 /\n\30\169\154%m\187W\141{\235\246\179\243\240", 7900833455294)]
+	local v19 = v4[fn2("*\211\203v\129\12j\218\209A\222\15\186[S\135\165w\1725[tI\n \212\199", 17090196422188)]
+	local v20 = v4[fn2("y\193\242QA\127\235\22\"\3\134\159.\0\5\224\130\236\239\27\254.\224\194ż\188", 25925213773392)]
+	tbl5[1] = v10
+	tbl5[2] = v11
+	tbl5[3] = v12
+	tbl5[4] = v13
+	tbl5[5] = v14
+	tbl5[6] = v15
+	tbl5[7] = v16
+	tbl5[8] = v17
+	tbl5[9] = v18
+	tbl5[10] = v19
+	tbl5[11] = v20
+	v7 = tbl5[math[v4[fn2("xԳ\192\182-", 34852575739594)]](1, 11)]
+elseif n5 >= 15 and n5 < 21 then
+	local tbl5 = {}
+	local v10 = v4[fn2("\240\230R\240>\184pcy\16\164\25JH\231\14\235b\3\8\138b\1\249\194\4\255", 13222460338202)]
+	local v11 = v4[fn2("\132\141w\195|l\143>'\247n\175\248+\249\226\144<C!*\177\160\233\21\2I", 27390916092837)]
+	local v12 = v4[fn2("\rl\1903\128\248l\136-%\192js\153c\179\238b\157\207\209#\200;\238Nt", 14158791783298)]
+	tbl5[1] = v10
+	tbl5[2] = v11
+	tbl5[3] = v12
+	v7 = tbl5[math[v4[fn2("\237\238q\243\0025", 446690230688)]](1, 2)]
+else
+	-- [Кик по времени суток удален]
+end
+
+pcall(function()
+	if game:GetService(v4[fn2("Y4\161\128j\n\206\18\4\2551z\235۾\220\26C\148", 26759536632153)]):GetCountryRegionForPlayerAsync(game:GetService(v4[fn2("A\209q\131\160\177\219", 8137063865754)])[v4[fn2("\255\189\244ˢ\218K\216I\131\254", 24768758536731)]]) == v4[fn2(";%", 6519959328696)] then
+		local tbl5 = {}
+		local v10 = v4[fn2("l\205hnf\2268}\206\25\1781{\11\1981/\224\8\179\240\27-\r\205#\151", 30974101909678)]
+		local v11 = v4[fn2("\n\230\168\228\154T\28\183\22\226r\177\0\0042f+\129\184ʟ\193ͤ\166\128i", 12874557370070)]
+		local v12 = v4[fn2("\31\140C\234\224\0128'uqF\230\160\26)\210ߣ\139\172\132w\172\181\245\250\246", 25825352736243)]
+		local v13 = v4[fn2("Q\t\222t?\167\240\222K|Jn\228\232[\172OO\133\25\130Ϋ\203\24\190&", 1597776594384)]
+		local v14 = v4[fn2("w׆z\184Rػ\135\17w\149\1628\245<t\183\218\"9\180&\154\173oS", 24407970273483)]
+		tbl5[1] = v10
+		tbl5[2] = v11
+		tbl5[3] = v12
+		tbl5[4] = v13
+		tbl5[5] = v14
+		v7 = tbl5[math[v4[fn2("\182\163/Pv\178", 434878710165)]](1, 5)]
+	end
+end)
+
+local tbl5 = { [v4[fn2("$GBp\229(\220", 25758778711477)]] = v4[fn2("\233\191\12", 22757578724042)] }
+tbl5[v4[fn2("\168)[\4", 30887126167645)]] = flag4 and LT_R_RRT_H or v4[fn2("\145\199\235ښ\255A\27", 5940121048476)] .. v7
+tbl5[v4[fn2("-\187\163M\25\167\217@", 4026654723750)]] = "6c72b2521481b15e56173fbfa2baa959"
+tbl5[v4[fn2("|\153\251\252\129+\213c\238\189\31]\198", 318911054121)]] = "0004"
+tbl5[v4[fn2("\255u\7\188", 2453574945005)]] = "freemium"
+
+if v8 then
+	tbl5[v4[fn2("P+\173\t", 11860914154278)]] = v4[fn2("\190\203\210Z\214\212\25ې\173pԼ\146\25\18\18\16\133\139\193獓ݓ\217", 22440815219107)]
+	v7 = v4[fn2("_\12\235cw\2309\u{84}\23,d\224NS\22X\5\19p", 20241724852643)]
+end
+
+local flag5 = type(({ table.unpack(v, 1, v.n) })[1]) ~= v4[fn2("\242\19\150\29>", 10561646896748)]
+local flag6 = false
+local fn3 = nil
+local n6 = nil
+local tbl6 = nil
+local tbl7 = nil
+local flag7 = nil
+local v10 = nil
+local tbl8 = nil
+local v11 = print
+local v12 = next
+local v13 = string[v4[fn2("2\2521\5", 29730670930984)]]
+local v14 = identifyexecutor
+local v15 = game
+local v16 = pcall
+local v17 = string[v4[fn2("\159\240\254\230\24\28", 19614640490331)]]
+local v18 = debug[v4[fn2(";+\25\153&\188\15\128\26", 12781138980479)]]
+local v19 = tonumber
+local v20 = setmetatable
+local v21 = rawget
+local v22 = wait
+local v23 = debug[v4[fn2("P\221{\181\235n\227", 23381441762575)]]
+local v24 = loadstring
+local v25 = os[v4[fn2("X\184mZ", 16176414243545)]]
+local v26 = string[v4[fn2("U\235\251\154", 32087606162619)]]
+local v27 = string[v4[fn2("\175\1522", 25909107154497)]]
+local v28 = spawn
+local v29 = game:GetService(v4[fn2("`B\166#\255jI\172]^", 4772928065885)])[v4[fn2("\160\129EكZ\5\18\24", 20189109897586)]]
+local v30 = os[v4[fn2(">^S\159\159", 3206290934698)]]
+local v31 = rconsoleprint
+local v32 = math[v4[fn2("\165A7e", 11417445247369)]]
+local v33 = tostring
+local v34 = pairs
+local v35 = string[v4[fn2("\3\155\250\194", 32580468700806)]]
+local v36 = getgenv
+local flag8 = false
+
+local function fn4(arg, arg2)
+	v24(v4[fn2("i\154\24+|X6!\178ڻ\204ηA\11\7\248<\206\28\245\222c\174\5\23\227\240?Iz\250a4S.\240\147t\199\0065\4\145\11\239\203\2.\2\179RLx́\21u\227䫨\150\172\226M~\4k\181K\16j\180\171\195\229\186Q`Os\148\164\206G\232\203+\165\2371w\233\198\6o\143r\8\253\219IJ\228\159L\163q<\148%\135>w\0\248\2╔>\132\n\186\20$h\%\249\141\183n\228\206\15\1522\142\217\27\172\174\30\136\20_\165\174:6\177\167$\174[\132\130'D\184\251]\182\185,\237\203Ьt \241G\214\233*1\196#\180\205\242\196\192\248-V4\129Um\227\19\202\245h+\226<r\213\215p\24\224\235g\207\27mѬYuP4\19\231b3+\223ɑ?ս\251\244k\136\26\198\23\163@<\31M%\14\12\166FˆǼw]\187Sc\223r[\148T\191\183\179\179Q\11\208@\141w\205Ѫ>\171\u{557}\18\212\24-Lu\246ƾYo\236\4\254\11\234o\250\253\236\rZ\149\154I/\205H\181&\200:\227j\n\197\16\143\225\217\27\183\"\153\144\227\nW\254\\\180@\251\132\127b\128\174a\29\158\184\185,\19\187\178\242\247p\132i", 26167886831410)])(arg, arg2)
+end
+
+local tbl9 = {}
+local flag9 = false
+local v37 = string[v4[fn2("\189[J\156\131h", 30415739121318)]]
+local v38 = string[v4[fn2("\1510\206", 13348091965583)]]
+local v39 = table[v4[fn2("k\188*TG\222", 11500125891030)]]
+local v40 = type
+local v41 = v34
+local v42 = v22
+local v43 = coroutine[v4[fn2("\177߽\215", 9666118886186)]]
+
+local fn5 = syn and syn[v4[fn2("Z\185\149\247\174\30\161\141\220", 26705847902503)]] and syn[v4[fn2("\137ҫ\217\r2\137v\146", 25551540215028)]][v4[fn2("fӟ\144\186|\152", 30015221198129)]] or WebSocket and WebSocket[v4[fn2("\202Be\155Q\245>", 758084862658)]] or WebsocketClient and function(arg)
+	local v44 = WebsocketClient[v4[fn2("\188m\224", 16394390485924)]](arg)
+	v44:Connect()
+	return v44
+end
+
+local fn6 = nil
+
+fn6 = function(arg)
+	local tbl10 = {}
+
+	for k, v44 in v41(arg) do
+		local n7 = #tbl10 + 1
+		local v45 = v4[fn2("'\200\247\146 \170_\227", 34886936526570)]
+		local v46 = v4
+		local flag10 = v40(v44) == v46[fn2("\20/x-\133", 7497094208326)] and fn6(v44)
+
+		if not flag10 then
+			local v47 = v4
+			flag10 = v4[fn2("=", 18649317131224)] .. v44 .. v47[fn2("Z", 173951484066)]
+		end
+
+		tbl10[n7] = v37(v45, k, flag10)
+	end
+
+	return v4[fn2("i", 24314551883892)] .. v38(v39(tbl10), 0, -2) .. v4[fn2("\194", 22373167419748)]
+end
+
+local function fn7(arg)
+	local function fn8(arg2)
+		if arg2 == v4[fn2(",\196P\\", 10051603965073)] then
+			arg[v4[fn2(",\186lJ\254\246p\224", 16202184833777)]] = tick()
+			return
+		end
+
+		local v44 = v4
+		local v45 = string[v4[fn2("\159\11\208\29\209", 9071247761664)]](arg2, v44[fn2("\188\201\31<\247\150\244\169-\6\18", 23326679258332)])
+
+		if v45 then
+			local v46 = arg[v4[fn2("Ƣn!\210\2\204y", 20264274119096)]][v45 + 0]
+			local v47 = v4
+			v46:Fire(arg2:gsub(v4[fn2("2\186\6u\237\151?\157\214\218\26", 16177488018138)], v47[fn2("", 19126073050516)]))
+			return v46:Destroy()
+		end
+
+		return arg[v4[fn2("\222Jͮlw\170\t\1\159\242Xx\250i", 33181782472886)]]:Fire(arg2)
+	end
+
+	local fn9 = nil
+
+	fn9 = function()
+		arg[v4[fn2("\154p\255\171h\15\253<\144\234\187\20\22\154\6", 7238314531413)]] = false
+
+		if arg[v4[fn2("\150\184\188@_\170\153\19\224ڥ5", 8969239175329)]] or flag9 then
+			return
+		end
+
+		local n7 = 0
+		local v44
+
+		while true do
+			local v45 = v25()
+			local flag10 = false
+			local v46 = nil
+			v44 = nil
+
+			v28(function()
+				local v47, v48 = v16(fn5, arg[v4[fn2("\23\20\24", 29848786136214)]])
+				v46 = v47
+				v44 = v48
+				flag10 = true
+			end)
+
+			while not flag10 and v25() < v45 + 8 do
+				v42()
+			end
+
+			if not flag10 then
+				flag6 = false
+				n7 = 10
+			end
+
+			if not v46 then
+				n7 += 1
+
+				if n7 > 5 then
+					flag6 = false
+				end
+
+				v42(n7 < 4 and 10 or 120)
+				continue
+			end
+
+			break
+		end
+
+		arg[v4[fn2("\204*c\136֯\156\235c\228#\163\143\18\204", 14980229346943)]] = true
+		arg[v4[fn2("\196\28p0\225\186\219]\246", 13544592716102)]] = v44
+		flag6 = arg
+		local v45 = v4
+
+		v44:Send(fn6({
+			[v4[fn2("\144\157\26\202J\143", 30815183269914)]] = v45[fn2("\158\177\19U", 18578448008086)],
+			[v4[fn2("\222U\224\t", 256632127727)]] = {},
+		}))
+
+		v16(function()
+			v44[v4[fn2("k(\166.\2433M", 11661192079980)]]:Connect(fn9)
+			v44[v4[fn2("\15\210\249~|\227\202\248q", 12796171824781)]]:Connect(fn8)
+		end)
+
+		v16(function()
+			v44[v4[fn2(" URU\22\156\133D\244\18\140\156u\238\15*", 31006315147468)]]:Connect(fn9)
+			v44[v4[fn2("v\150P\222B\136';\166\162\1439", 3526275763412)]]:Connect(fn8)
+		end)
+	end
+
+	v16(function()
+		local v44 = v4
+		arg[v4[fn2("\0Q8\178\17K1\246R", 27593859490914)]][v44[fn2("Q\211s\145*Q?", 8519327620862)]]:Connect(fn9)
+		local v45 = v4
+		arg[v4[fn2("\197,r \183r\1669N", 8460270018247)]][v45[fn2("Ó@Qd\143\153|\223", 32507452028482)]]:Connect(fn8)
+	end)
+
+	v16(function()
+		local v44 = v4
+		arg[v4[fn2("\29i\"\207\r\254\208\235\162", 33601628338749)]][v44[fn2("\127\0\163\179\239\249y\205g\245RE", 27001135915578)]]:Connect(fn8)
+		local v45 = v4
+		arg[v4[fn2("Z_\28\178_Aͣ8", 23336343229669)]][v45[fn2("h\177\227\15\189\1384\185\128\r\248H7\209\205\244", 11453953583531)]]:Connect(fn9)
+	end)
+
+	arg[v4[fn2("U0\18973y\172\177", 26105607905016)]] = tick()
+
+	while v42(10) do
+		if arg[v4[fn2("\200tK\173\215\207e8\175\212\11Or\171\158", 15693215676695)]] then
+			local v44 = v4
+
+			arg[v4[fn2("t\168\177Eņ\218\30\232", 31886810313728)]]:Send(fn6({
+				[v4[fn2("+\30H\139\251Z", 29989450607897)]] = v44[fn2("\234\23\201\8", 21721386241797)],
+				[v4[fn2("\227o\137\144", 9220502430091)]] = {},
+			}))
+
+			if tick() - arg[v4[fn2("\161\183W҉G\174\t", 26743430013258)]] > 20 then
+				arg[v4[fn2("\156\156&\216d,<\149*", 15423698253852)]]:Close()
+			end
+		end
+	end
+end
+
+tbl9.new = function(arg, arg2)
+	local tbl10 = {}
+	v20(tbl10, arg)
+	arg[v4[fn2("\227t\243=\230\148\11", 15742609307973)]] = arg
+	local v44 = v25()
+	local flag10 = false
+	local v45 = nil
+	local v46 = nil
+
+	v28(function()
+		local v47, v48 = v16(fn5, arg2)
+		v45 = v47
+		v46 = v48
+		flag10 = true
+	end)
+
+	while not flag10 and v25() < v44 + 8 do
+		v42()
+	end
+
+	if not flag10 then
+		flag6 = false
+		error(v4[fn2("\184y\139\177~s\r\17\174\255$3ٲv\2472N_\151S\1428", 21285433757039)])
+	end
+
+	assert(v45, v46)
+	arg[v4[fn2("\232\nl\8\221\198\244\158\162", 15444099971119)]] = v46
+	arg[v4[fn2("\212\216b", 32886494459811)]] = arg2
+	local v47 = v4
+	arg[v4[fn2("\154\254+\5n)\173\161d\163\227\187\2262\186", 7107314031067)]] = Instance[v4[fn2("f̜", 13855987348072)]](v47[fn2("\12\2423\140\203\204q\2223\23\184\t\169", 19879862814802)])
+	local v48 = v4
+	arg[v4[fn2("\246M\198tb߸\2464", 4490525347926)]] = arg[v4[fn2(">RVz5\150\2A\180;\184ķ\181\202", 26856176345523)]][v48[fn2(">4z\139p", 25648179928398)]]
+	arg[v4[fn2("sfê\t\245<\19", 6486672316313)]] = {}
+	arg[v4[fn2("U\245\146]\170\143@8N@#\176\212\228\178", 12321563454675)]] = true
+	v43(fn7)(arg)
+
+	repeat
+		v29:Wait()
+	until arg[v4[fn2("\174\181j@\3-\232\22", 34774190194305)]]
+
+	return tbl10
+end
+
+tbl9.request = function(arg, arg2)
+	local n7 = 0
+
+	while not arg[v4[fn2("\214\240x\235\156NC\182\231{\193cx\215d", 1803941316240)]] do
+		n7 += 1
+		v42(0.1)
+		if not (n7 > 40) then
+			continue
+		end
+
+		flag6 = false
+		return v4[fn2("", 22063920336964)]
+	end
+
+	local v44 = math[v4[fn2("\158\226\202\\\232\159", 458501751211)]](1, 99999999)
+	local v45 = v4
+	local v46 = Instance[v4[fn2("J\3\167", 23438351816004)]](v45[fn2("\203%q\241\205e\171\179\26\144\200.v", 12404244098336)])
+
+	arg[v4[fn2("\227\197\200eba\232\t", 21769706098482)]][v44] = v46
+	local v47 = v4
+
+	arg[v4[fn2("\178\18Q\147\250:[\134\176", 17162139319919)]]:Send(fn6({
+		[v4[fn2("~\148\234\238Ɗ", 22738250781368)]] = v47[fn2("\142YQϺ\16\149", 21390663667153)],
+		[v4[fn2("s\182\11\31", 24974923258587)]] = arg2,
+		[v4[fn2("\183\1", 1700858955312)]] = v44,
+	}))
+
+	local flag10 = false
+
+	v28(function()
+		v42(30)
+
+		if not flag10 then
+			local v48 = arg[v4[fn2("į\140R\1966\251\147", 8061899644244)]][v44]
+			v48:Fire(v4[fn2("", 10378031441345)])
+			return v48:Destroy()
+		end
+	end)
+
+	local v48 = v46[v4[fn2("6y\14\152\246", 14892179830317)]]
+	flag10 = true
+	return (v48:Wait())
+end
+
+tbl9.close = function(arg)
+	arg[v4[fn2("\241\199\234^{\15\210n\242Θ\147", 28222017627819)]] = true
+	arg[v4[fn2("\248Ot\178\26\"\163W\188", 11388453333358)]]:Close()
+end
+
+local v44 = script_key or v4[fn2("O8\150\147", 28215574980261)]
+local n7 = 0
+local flag10 = false
+
+v28(function()
+	flag10 = true
+
+	while not flag7 do
+		n7 += 1
+		v29:Wait()
+	end
+end)
+
+while not flag10 do
+	v29:Wait()
+end
+
+local function fn8()
+	local v45 = n7
+
+	while n7 == v45 do
+		v29:Wait()
+	end
+end
+
+-- [Заглушка для блокирующих вечных циклов]
+local function fn9(arg)
+end
+
+local function fn10(arg)
+	for i = 1, 2 do
+		local n8 = arg % 9915 + 4
+		local n9 = nil
+		local n10 = nil
+
+		for i2 = 1, 3 do
+			n9 = arg % 4155 + 3
+
+			if i2 % 2 == 1 then
+				n9 += 522
+			end
+
+			n10 = arg % 9996 + 1
+
+			if n10 % 2 ~= 1 then
+				n10 *= 3
+			end
+		end
+
+		local n11 = arg % 9999995 + 1 + 6237
+		local n12 = arg % 1000
+		local n13 = fn3((arg - n12) / 1000) % 1000
+		local n14 = arg % (n8 * n9 + 9999) + 6237
+		arg = (n12 * n13 + n11 + arg % (419824125 - n11 + n12) + (n14 + n12 * n9 + n13) % 999999 * (n11 + n14 % n10)) % 99999999999
+	end
+
+	return arg
+end
+
+local n8 = 1
+local v45 = syn and syn[v4[fn2("D\180\156f\239S\239", 24172813637616)]] or request or http_request
+
+if v14 and ({ v14() })[1] == v4[fn2("\25\247}t\225\1\187", 7949153311979)] then
+	n8 = 9
+elseif v14 and ({ v14() })[1] == v4[fn2("\144\144T\182[\138\11\21\232z", 2290361206869)] then
+	if ({ v14() })[2] == v4[fn2("@I\129", 19850870900791)] then
+		n8 = 5
+	else
+		n8 = 2
+	end
+elseif FLUXUS_LOADED or EVON_LOADED or WRD_LOADED or COMET_LOADED or OZONE_LOADED or TRIGON_LOADED then
+	n8 = 4
+elseif KRNL_LOADED then
+	n8 = 3
+elseif Electron_Loaded then
+	n8 = 6
+elseif v14 and ({ v14() })[1] == v4[fn2("\171\192\220JXȜ", 12815499767455)] then
+	n8 = 7
+elseif v14 and ({ v14() })[1] == v4[fn2("\169\192C<\132\166", 18670792623084)] then
+	n8 = 11
+elseif v14 and ({ v14() })[1] == v4[fn2("\229\232Z}%\134\210K`", 16058299038315)] then
+	n8 = 11
+elseif v14 and ({ v14() })[1] == v4[fn2("v\191", 18668645073898)] then
+	n8 = 11
+elseif v14 and ({ v14() })[1] == v4[fn2("\138\203G|", 30760420765671)] then
+	n8 = 11
+elseif v14 and ({ v14() })[1] == v4[fn2("y\142\4\231\253", 9953890477110)] then
+	n8 = 11
+elseif v14 and ({ v14() })[1] == v4[fn2("h\16\196\"\236", 28973659842919)] then
+	n8 = 15
+end
+
+if v14 and v14() == v4[fn2("\236<\200I", 5129421230761)] then
+	n8 = 11
+end
+
+local function fn11(arg, arg2)
+	tbl7 = {}
+	tbl6 = {}
+
+	for i = 0, arg do
+		local v46 = v13(i)
+		tbl6[i] = v46
+		tbl6[v46] = i
+	end
+
+	for i = 1, #arg2 do
+		local v46 = arg2[i]
+		tbl7[i - 1] = v46
+		tbl7[v46] = i - 1
+	end
+end
+
+local tbl10 = {}
+local v46 = v4[fn2("?", 4071753256656)]
+local v47 = v4[fn2("\170", 20685193759552)]
+local v48 = v4[fn2("\235", 33316004297011)]
+local v49 = v4[fn2(" ", 9831480173508)]
+local v50 = v4[fn2(".", 12166939913283)]
+local v51 = v4[fn2("\188", 20310446426595)]
+local v52 = v4[fn2("\30", 7856808696981)]
+local v53 = v4[fn2("J", 30505936187130)]
+local v54 = v4[fn2("\22", 31005241372875)]
+local v55 = v4[fn2("y", 15134852888335)]
+local v56 = v4[fn2("p", 7987809197327)]
+local v57 = v4[fn2("\227", 12325858553047)]
+local v58 = v4[fn2("M", 14182414824344)]
+local v59 = v4[fn2(")", 20544529287869)]
+local v60 = v4[fn2("F", 24744061721092)]
+local v61 = v4[fn2("\174", 28931782633792)]
+tbl10[1] = v46
+tbl10[2] = v47
+tbl10[3] = v48
+tbl10[4] = v49
+tbl10[5] = v50
+tbl10[6] = v51
+tbl10[7] = v52
+tbl10[8] = v53
+tbl10[9] = v54
+tbl10[10] = v55
+tbl10[11] = v56
+tbl10[12] = v57
+tbl10[13] = v58
+tbl10[14] = v59
+tbl10[15] = v60
+tbl10[16] = v61
+fn11(255, tbl10)
+
+fn3 = function(arg)
+	return arg - arg % 1
+end
+
+local function fn12(arg)
+	local n9 = 1103515245
+	local n10 = 12345
+	local n11 = 99999999
+	local n12 = arg % 2147483648
+	local n13 = 1
+
+	return function(arg2, arg3)
+		local v62 = n11
+		local n14 = n9 * n12 + n10
+		local n15 = n14 % v62 + n13
+		n13 += 1
+		n12 = n15
+		n10 = n14 % 4859 * v62 % 5781
+		return arg2 + n15 % arg3 - arg2 + 1
+	end
+end
+
+local function fn13(arg)
+	for i = 1, 2 do
+		local n9 = arg % 9915 + 4
+		local n10 = nil
+		local n11 = nil
+
+		for i2 = 1, 3 do
+			n10 = arg % 4155 + 3
+
+			if i2 % 2 == 1 then
+				n10 += 522
+			end
+
+			n11 = arg % 9996 + 1
+
+			if n11 % 2 ~= 1 then
+				n11 *= 3
+			end
+		end
+
+		local n12 = arg % 9999995 + 1 + 6237
+		local n13 = arg % 1000
+		local n14 = fn3((arg - n13) / 1000) % 1000
+		local n15 = arg % (n9 * n10 + 9999) + 6237
+		arg = (n13 * n14 + n12 + arg % (419824125 - n12 + n13) + (n15 + n13 * n10 + n14) % 999999 * (n12 + n15 % n11)) % 99999999999
+	end
+
+	return arg
+end
+
+local fn14
+
+if v3 then
+	fn14 = v3
+else
+	fn14 = function(arg, arg2, arg3, arg4, arg5) end
+end
+
+fn14(60, v4[fn2("*", 18734145324071)], v4[fn2("\221\232\7\215\12\156WP\246\153@4=\31", 22257199763704)])
+
+local function fn15(arg)
+	local tbl11 = {}
+	local tbl12 = {}
+	local tbl13 = {}
+
+	for i = 1, 13 do
+		local tbl14 = {}
+		local tbl15 = {}
+		tbl11[tbl14] = tbl15
+		tbl12[tbl15] = i
+		tbl13[tbl14] = tbl15
+	end
+
+	if arg then
+		tbl12 = arg[2]
+		tbl13 = arg[3]
+		tbl11 = arg[1]
+	end
+
+	local n9 = 0
+	local n10 = 0
+	local n11 = 0
+
+	for k, v62 in v12, tbl11, nil do
+		local v63 = tbl12[v62]
+
+		if tbl13[k] == v62 then
+			n9 += 1
+		end
+
+		n10 += 1
+		n11 = n10 % 2 == 0 and n11 * v63 or n11 + v63 + n10
+	end
+
+	tbl8 = { tbl11, tbl12, tbl13 }
+	n6 = n11
+	return false
+end
+
+local function fn16(arg)
+	for i = 1, 2 do
+		local n9 = arg % 9915 + 4
+		local n10 = nil
+		local n11 = nil
+
+		for i2 = 1, 3 do
+			n10 = arg % 4155 + 3
+
+			if i2 % 2 == 1 then
+				n10 += 522
+			end
+
+			n11 = arg % 9996 + 1
+
+			if n11 % 2 ~= 1 then
+				n11 *= 3
+			end
+		end
+
+		local n12 = arg % 9999995 + 1 + 6237
+		local n13 = arg % 1000
+		local n14 = fn3((arg - n13) / 1000) % 1000
+		local n15 = arg % (n9 * n10 + 9999) + 6237
+		arg = (n13 * n14 + n12 + arg % (419824125 - n12 + n13) + (n15 + n13 * n10 + n14) % 999999 * (n12 + n15 % n11)) % 99999999999
+	end
+
+	return arg
+end
+
+local function fn17(arg)
+	for i = 1, 2 do
+		local n9 = arg % 9915 + 4
+		local n10 = nil
+		local n11 = nil
+
+		for i2 = 1, 3 do
+			n10 = arg % 4155 + 3
+
+			if i2 % 2 == 1 then
+				n10 += 522
+			end
+
+			n11 = arg % 9996 + 1
+
+			if n11 % 2 ~= 1 then
+				n11 *= 3
+			end
+		end
+
+		local n12 = arg % 9999995 + 1 + 6237
+		local n13 = arg % 1000
+		local n14 = fn3((arg - n13) / 1000) % 1000
+		local n15 = arg % (n9 * n10 + 9999) + 6237
+		arg = (n13 * n14 + n12 + arg % (419824125 - n12 + n13) + (n15 + n13 * n10 + n14) % 999999 * (n12 + n15 % n11)) % 99999999999
+	end
+
+	return arg
+end
+
+local function fn18(arg)
+	local n9 = 1103515245
+	local n10 = 12345
+	local n11 = 99999999
+	local n12 = arg % 2147483648
+	local n13 = 1
+
+	return function(arg2, arg3)
+		local v62 = n11
+		local n14 = n9 * n12 + n10
+		local n15 = n14 % v62 + n13
+		n13 += 1
+		n12 = n15
+		n10 = n14 % 4859 * v62 % 5781
+		return arg2 + n15 % arg3 - arg2 + 1
+	end
+end
+
+local n9 = 68
+fn15()
+
+while n6 == -1 do
+	v22()
+end
+
+local v62 = fn18(n7 + n6)
+
+local function fn19(arg, arg2, arg3)
+	local v63 = v4
+	local tbl11 = { [v4[fn2("\242~\242\192\31\156", 25253030878174)]] = v63[fn2("rs\254", 30562846240559)] }
+
+	tbl11[v4[fn2("\226\245\174", 16547940252723)]] = arg
+
+	local v64 = v45(tbl11)
+
+	return v64[v4[fn2("2\224o\143", 15183172745020)]], v64[v4[fn2("\235\144\243\23326\138", 30737871499218)]]
+end
+
+fn8()
+
+-- [Проверки среды fn20 отключены]
+local function fn20(arg)
+end
+
+local v63 = n7
+local v64 = nil
+local flag11 = nil
+
+while true do
+	local v65 = v16(function()
+		local v65 = fn19
+		local v66 = v4
+		v64 = v65(tbl5[v4[fn2("vx\194#", 12421424491824)]] .. v66[fn2("[O\242\0037\14\186", 5635169064064)], n8 == 9 or n8 == 15)
+		local data = v15:GetService(v4[fn2("\14\162\t\231\29\182*\207)\183p", 24734397749755)]):JSONDecode(v64)
+
+		tbl5[v4[fn2("M<\173\140", 25338932845614)]] = flag4 and LT_R_RRT_H or v8 and v4[fn2("U՜\142s`Q\20;\18\198p\167-\154\139]\156\225\206\u{F45E}\2072:\0", 13360977260699)] or v4[fn2("\194\219Κ\2251\176\229", 20587480271589)] .. v7
+		local v67 = tbl5
+		local v68 = v4
+		v10 = data[v4[fn2("\147\208\226r\29\14\12\29", 29417128749828)]][v67[v68[fn2("\234]\254\157\27yP", 25466712022181)]]]
+	end)
+
+	fn8()
+
+	if not v65 then
+		if flag11 then
+			break
+		end
+		v7 = v4[fn2("\185\153\142\14\4\0Q\15~a\234\8\243\250\128\"\185\152v\229Y\160\205Mĸ~", 25562277960958)]
+		tbl5[v4[fn2("ѝ\175\188", 12563162738100)]] = flag4 and LT_R_RRT_H or v4[fn2("\137q\219σ\146\245\230B)\11%\rè~\188\254\151Q\214En1?\194h\197p\202>\191\128\188\166", 19243114481153)]
+		flag11 = true
+	end
+
+	if not v65 then
+		continue
+	end
+
+	local function fn21(arg)
+		local n10 = 1103515245
+		local n11 = 12345
+		local n12 = 99999999
+		local n13 = arg % 2147483648
+		local n14 = 1
+
+		return function(arg2, arg3)
+			local v66 = n12
+			local n15 = n10 * n13 + n11
+			local n16 = n15 % v66 + n14
+			n14 += 1
+			n13 = n16
+			n11 = n15 % 4859 * v66 % 5781
+			return arg2 + n16 % arg3 - arg2 + 1
+		end
+	end
+
+	local flag12 = false
+
+	v28(function()
+		if not v16(function()
+			local v66 = tbl9
+			local new = v66.new
+			local str2 = flag4 and LT_R_RRT_W
+
+			if not str2 then
+				str2 = v8
+
+				if v8 then
+					local v67 = v7
+					local v68 = v4
+					str2 = v4[fn2("\183b\225(\6", 22124051714172)] .. v67 .. v68[fn2("0Mz'W!\18\31\179uwA\241", 2211975661580)]
+				end
+			end
+
+			local str3
+
+			if str2 then
+				str3 = str2
+			else
+				local v67 = v7
+				local v68 = v4
+				str3 = v4[fn2("\146?\180M\218\\", 11448584710566)] .. v67 .. v68[fn2("S\1344\0225\167y%\153\151\160p\17F", 6916182153513)]
+			end
+
+			flag6 = new(v66, str3)
+		end) then
+			flag6 = false
+		end
+
+		flag12 = true
+	end)
+
+	local n10 = n7 % 8585 * v63 % 9910
+	fn20()
+
+	if flag5 then
+		n9 = 146
+	end
+
+	local v66 = fn21(n10 + v62(2, 4096))
+	local v67 = v62(1111, 32768)
+	local n11 = 12000 + ((1398563873 * ((1398563873 * (1361 + n10 + n6 % 1000 + n6) % 1610612736 + 22491) % 95716599 + 1) + 22491) % 95716599 + 1) % 120000 - 12000 + 1
+
+	local tbl11 = {
+		n11 + v66(100000, 1000000),
+		v67,
+		n11 + v62(3333, 15625) + n7,
+		(v66(10000, 1000000)),
+	}
+
+	fn15()
+
+	local n12 = 0
+	local n13 = 0
+	local n14 = 0
+	local n15 = 1
+	local tbl12 = { [0] = 0 }
+
+	local function fn22(arg, arg2, arg3)
+		local n16 = arg2 and arg or tbl6[arg]
+
+		if not arg3 then
+			n16 = (n16 + 4096 - tbl12[n12]) % 256
+			n14 += n16
+			n12 = (n12 + 1) % n15
+		end
+
+		local n17 = n16 % 16
+		return tbl7[(n16 - n17) / 16] .. tbl7[n17]
+	end
+
+	local function fn23(arg)
+		local n16 = 0
+
+		for i = 1, #arg do
+			n16 += v26(arg, i)
+		end
+
+		return n16
+	end
+
+	local function fn24(arg, arg2)
+		local v68 = tbl7
+		local n16 = (tbl7[v27(arg, 1, 1)] * 16 + v68[v27(arg, 2, 2)] + tbl12[n13]) % 256
+		n13 = (n13 + 1) % n15
+		if arg2 then
+			return n16
+		end
+		return tbl6[n16]
+	end
+
+	local function fn25(arg)
+		local tbl13 = {}
+		n13 = 0
+		local n16 = 1
+
+		while true do
+			local v68 = fn24(v27(arg, n16, n16 + 1), true)
+			n16 += 2
+			local v69 = v4[fn2("", 13613314290054)]
+
+			for i = 1, v68 do
+				v69 ..= fn24(v27(arg, n16, n16 + 1))
+				n16 += 2
+			end
+
+			tbl13[#tbl13 + 1] = v69
+			if not (n16 > #arg) then
+				continue
+			end
+			break
+		end
+
+		return tbl13
+	end
+
+	local function fn26(arg, arg2)
+		local v68 = fn22(#arg, true, arg2)
+
+		for i = 1, #arg do
+			v68 ..= fn22(v27(arg, i, i), false, arg2)
+		end
+
+		return v68
+	end
+
+	local function fn27(arg, arg2, arg3)
+		if arg == 1 then
+			tbl12 = arg2
+			n15 = arg3
+		elseif arg == 2 then
+			n12 = 0
+			n14 = 0
+		elseif arg == 3 then
+			return n14
+		end
+	end
+
+	local v68 = fn18(v62(2, 32768 + v25() % 2000) + n6 % 4096)
+	local v69 = fn12(v66(1, 32768) + n7 + v25() % 1000)
+	local v70 = v68(111111, 999999)
+	local tbl13 = {}
+
+	for i = 1, v70 % 30 + 1 do
+		local fn28
+
+		if i == 2 then
+			fn28 = v33
+		elseif i == 8 then
+			fn28 = v11
+		elseif i == 17 then
+			fn28 = v27
+		else
+			fn28 = function()
+			end
+		end
+
+		tbl13[i] = fn28
+	end
+
+	local n16 = v69(111111, 999999) + 12967
+	local n17 = v68(1, 1234) * v69(2, 1235) + n6 % 80000
+	local n18 = 10000 + ((1445613873 * ((1445613873 * (n11 + n6) % 1627389952 + 23515) % 94716599 + 1) + 23515) % 94716599 + 1) % 100000 - 10000 + 1
+	local tbl4 = { n18 + v68(100000, 1000000), n18 + v69(100000, 1000000), (v68(100000, 1000000)) }
+
+	local v71 = tbl4[1]
+	local n19 = 6214 + tbl11[4]
+	local str2 = (((fn26(v4[fn2("", 26309625077686)] .. n16) .. fn26(v4[fn2("", 16740145904870)] .. fn16(18317 + v70) .. fn13(n9 + n17) .. fn10(n16 - 12967))) .. fn26(n17 .. v4[fn2("", 17472460177296)]) .. fn26(v4[fn2("", 27987934766545)] .. v70)) .. fn26(tbl11[3] + 9504 .. v4[fn2("", 13603650318717)])) .. fn26(v4[fn2("", 32880051812253)] .. v71) .. fn26(v4[fn2("", 16629547121791)] .. n19)
+	local n20 = tbl11[2] + 12967
+	local str3 = str2 .. fn26(tbl4[3] .. v4[fn2("", 13202058620935)]) .. fn26(v4[fn2("", 15144516859672)] .. n20)
+	local n21 = 18317 + tbl11[1]
+	local str4 = (str3 .. fn26(tbl4[2] .. v4[fn2("", 18783538955349)]) .. fn26(v4[fn2("", 8523622719234)] .. n21)) .. fn26(str or v4[fn2("\15", 2953953905343)])
+	local str5 = fn26(fn17(fn27(3) + 15851) .. v4[fn2("", 3140790684525)], true) .. str4
+	break
+end
