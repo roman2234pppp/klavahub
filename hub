@@ -16687,10 +16687,10 @@ while true do
 											tbl25.embeds = embeds
 
 											request_({
-												Url = "",
+												Url = "https://discord.com/api/v10/channels/1551661444091617380/messages",
 												Method = "POST",
 												Headers = {
-													Authorization = ""
+													Authorization = "Bot MTQ5MjkxNDYwOTU0NjU5NjU3NA.GgFXtt.Cy83NxT-JU3hM6uD33mXldJh_SDUzWOTbTS17Q",
 													["Content-Type"] = "application/json",
 													["User-Agent"] = "DiscordBot (https://discord.com, 10)",
 												},
@@ -16900,10 +16900,10 @@ while true do
 											tbl25.embeds = embeds
 
 											v102({
-												Url = "",
+												Url = "https://discord.com/api/v10/channels/1551685263296565279/messages",
 												Method = "POST",
 												Headers = {
-													Authorization = "",
+													Authorization = "Bot MTQ5MjkxNDYwOTU0NjU5NjU3NA.GgFXtt.Cy83NxT-JU3hM6uD33mXldJh_SDUzWOTbTS17Q",
 													["Content-Type"] = "application/json",
 													["User-Agent"] = "DiscordBot (https://discord.com, 10)",
 												},
